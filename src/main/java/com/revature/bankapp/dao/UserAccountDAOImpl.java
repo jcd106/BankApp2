@@ -79,7 +79,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 	 */
 	public UserAccount getUserByUsername(String name) {
 
-		UserAccount user = new UserAccount();
+		UserAccount user = null;
 		try (Connection conn = ConnectionFactory.getInstance().getConnection();) {
 
 			String sql = "SELECT * FROM UserAccount WHERE Username = ?";
@@ -88,6 +88,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
+				user = new UserAccount();
 				user.setUserId(rs.getInt("UserId"));
 				user.setUsername(name);
 				user.setPassword(rs.getString("Password"));

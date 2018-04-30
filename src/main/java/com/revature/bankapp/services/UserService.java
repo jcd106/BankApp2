@@ -29,6 +29,9 @@ public class UserService {
 	
 	public UserAccount loginUser(UserAccount user) {
 		UserAccount usernameMatch = userDao.getUserByUsername(user.getUsername());
+		if (usernameMatch == null) {
+			return null;
+		}
 		if (user.getUsername() != null) {
 			if (user.getPassword().equals(usernameMatch.getPassword())) {
 				return usernameMatch;
