@@ -43,9 +43,7 @@ public class ConnectionFactory {
 		Properties prop = new Properties();
 
 		try {
-			prop.load(new FileReader(
-					"C:\\Users\\jcdug\\my_git_repos\\" + "1803-MAR26-Java\\Joshua_Dughi_Code\\Week 2\\BankApp2\\"
-							+ "src\\main\\resources\\application.properties"));
+			prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties"));
 			Class.forName(prop.getProperty("driver"));
 			conn = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("user"),
 					prop.getProperty("pwd"));
