@@ -30,7 +30,7 @@ public class UserService {
 	public UserAccount loginUser(UserAccount user) {
 		UserAccount usernameMatch = userDao.getUserByUsername(user.getUsername());
 		if (user.getUsername() != null) {
-			if (usernameMatch.getPassword().equals(user.getPassword())) {
+			if (user.getPassword().equals(usernameMatch.getPassword())) {
 				return usernameMatch;
 			}
 		}
